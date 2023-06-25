@@ -20,7 +20,7 @@ Game class:/
 -starts the game/
 -switches players/
 -handles player moves/
--checks for wind or draw/
+-checks for win or draw/
 -provides interface/
 -handles user input/
 -displays the board/
