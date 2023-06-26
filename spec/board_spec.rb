@@ -86,7 +86,7 @@ describe Board do
       end
     end
 
-    it 'when not a win' do
+    it 'should return false when not a win' do
       expect(subject.horizontal_win('any' || 'red' || 'yellow')).to be false
     end
   end
@@ -124,7 +124,7 @@ describe Board do
       end
     end
 
-    it 'when not a win' do
+    it 'should return false when not a win' do
       expect(subject.vertical_win('any' || 'red' || 'yellow')).to be false
     end
   end
@@ -172,8 +172,45 @@ describe Board do
       end
     end
 
-    it 'when not a win' do
+    it 'should return false when not a win' do
       expect(subject.diagonal_win('any' || 'red' || 'yellow')).to be false
+    end
+  end
+
+  describe '#win?' do
+    subject = Board.new
+    it 'should return false when no win' do
+      expect(subject.win?('any')).to be false
+    end
+
+    context 'when C2 to C5 is taken' do
+      pieces = %w[C2 C3 C4 C5]
+      it 'by red' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'red'
+        end
+        expect(subject.win?('red')).to be true
+      end
+    end
+
+    context 'when B4 to E4 is taken' do
+      pieces = %w[B4 C4 D4 E4]
+      it 'by yellow' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'yellow'
+        end
+        expect(subject.win?('yellow')).to be true
+      end
+    end
+
+    context 'when D3 to A6 is taken' do
+      pieces = %w[D3 C4 B5 A6]
+      it 'by me' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'me'
+        end
+        expect(subject.win?('me')).to be true
+      end
     end
   end
 end

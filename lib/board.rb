@@ -25,6 +25,14 @@ class Board
     nil
   end
 
+  def win?(color)
+    return true if horizontal_win(color)
+    return true if vertical_win(color)
+    return true if diagonal_win(color)
+
+    false
+  end
+
   def horizontal_win(color)
     @rows.each do |row|
       @columns[(0..(@columns.length - 3))].each do |column|
