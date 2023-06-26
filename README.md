@@ -16,7 +16,7 @@ Player class:
 -makes moves  
 
 Game class:  
--has current  player, game board, and game state  
+-has current player, game board, and game state  
 -starts the game  
 -switches players  
 -handles player moves  
