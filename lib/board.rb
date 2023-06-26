@@ -2,7 +2,8 @@
 
 # contains board state, places pieces, and checks for win condition
 class Board
-  attr_accessor :board, :rows, :columns
+  attr_accessor :board
+  attr_reader :rows, :columns
 
   def initialize
     @board = {
