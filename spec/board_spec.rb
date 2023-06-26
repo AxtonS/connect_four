@@ -128,4 +128,52 @@ describe Board do
       expect(subject.vertical_win('any' || 'red' || 'yellow')).to be false
     end
   end
+
+  describe '#diagonal_win' do
+    subject = Board.new
+
+    context 'when A1 to D4 is taken' do
+      pieces = %w[A1 B2 C3 D4]
+      it 'by red' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'red'
+        end
+        expect(subject.diagonal_win('red')).to be true
+      end
+    end
+
+    context 'when F4 to C7 is taken' do
+      pieces = %w[F4 E5 D6 C7]
+      it 'by yellow' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'yellow'
+        end
+        expect(subject.diagonal_win('yellow')).to be true
+      end
+    end
+
+    context 'when E2 to B6 is taken' do
+      pieces = %w[E2 D3 C4 B5]
+      it 'by random' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'random'
+        end
+        expect(subject.diagonal_win('random')).to be true
+      end
+    end
+
+    context 'when B3 to E6 is taken' do
+      pieces = %w[B3 C4 D5 E6]
+      it 'by any' do
+        pieces.each do |piece|
+          subject.board[piece.to_sym] = 'any'
+        end
+        expect(subject.diagonal_win('any')).to be true
+      end
+    end
+
+    it 'when not a win' do
+      expect(subject.diagonal_win('any' || 'red' || 'yellow')).to be false
+    end
+  end
 end

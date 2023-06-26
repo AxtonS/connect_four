@@ -28,7 +28,8 @@ class Board
   def horizontal_win(color)
     @rows.each do |row|
       @columns[(0..(@columns.length - 3))].each do |column|
-        if [@board[(row + column).to_sym], @board[(row + (column.to_i + 1).to_s).to_sym],
+        if [@board[(row + column).to_sym],
+            @board[(row + (column.to_i + 1).to_s).to_sym],
             @board[(row + (column.to_i + 2).to_s).to_sym],
             @board[(row + (column.to_i + 3).to_s).to_sym]].all? { |space| space == color }
           return true
@@ -41,9 +42,35 @@ class Board
   def vertical_win(color)
     (0..(@rows.length - 4)).to_a.each do |row|
       @columns.each do |column|
-        if [@board[(@rows[row] + column).to_sym], @board[(@rows[row + 1] + column).to_sym],
+        if [@board[(@rows[row] + column).to_sym],
+            @board[(@rows[row + 1] + column).to_sym],
             @board[(@rows[row + 2] + column).to_sym],
             @board[(@rows[row + 3] + column).to_sym]].all? { |space| space == color }
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  def diagonal_win(color)
+    (0..(@rows.length - 4)).each do |row|
+      (0..(@columns.length - 4)).each do |column|
+        if [@board[(@rows[row] + @columns[column]).to_sym],
+            @board[(@rows[row + 1] + @columns[column + 1]).to_sym],
+            @board[(@rows[row + 2] + @columns[column + 2]).to_sym],
+            @board[(@rows[row + 3] + @columns[column + 3]).to_sym]].all? { |space| space == color }
+          return true
+        end
+      end
+    end
+
+    (2..(@rows.length - 1)).each do |row|
+      (0..(@columns.length - 4)).each do |column|
+        if [@board[(@rows[row] + @columns[column]).to_sym],
+            @board[(@rows[row - 1] + @columns[column + 1]).to_sym],
+            @board[(@rows[row - 2] + @columns[column + 2]).to_sym],
+            @board[(@rows[row - 3] + @columns[column + 3]).to_sym]].all? { |space| space == color }
           return true
         end
       end
