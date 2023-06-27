@@ -16,11 +16,11 @@ Player class:
 -makes moves  
 
 Game class:  
--has current player, game board, and game state  
+-has current player, and game state  
 -starts the game  
 -switches players  
--handles player moves  
 -checks for win or draw  
 -provides interface  
 -handles user input  
 -displays the board  
+-handles player moves  
