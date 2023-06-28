@@ -4,7 +4,7 @@ require './lib/board'
 
 describe Board do
   describe '#initialize' do
-    it 'should create board object' do
+    it 'creates board object' do
       expect(subject).to be_an_instance_of Board
     end
   end
@@ -24,29 +24,29 @@ describe Board do
 
   describe '#place' do
     context 'when empty' do
-      it 'should place piece in row F' do
+      it 'places piece in row F' do
         subject.place('r', 1)
         expect(subject.board[:F1]).to eql('r')
       end
-      it 'should not return nil' do
+      it 'does not return nil' do
         expect(subject.place('r', 3)).to_not be_nil
       end
     end
-    context 'when placed second piece in same column' do
-      it 'should place piece in row E' do
+    context 'when placed twice in same column' do
+      it 'places piece in row E' do
         subject.place('y', 1)
         subject.place('y', 1)
         expect(subject.board[:E1]).to eql('y')
       end
     end
     context 'when placing piece 6 times in same column' do
-      it 'should place piece in row A' do
+      it 'places piece in row A' do
         6.times { subject.place('r', 7) }
         expect(subject.board[:A7]).to eql('r')
       end
     end
     context 'when column is full' do
-      it 'should return nil' do
+      it 'returns nil' do
         6.times { subject.place('r', 2) }
         expect(subject.place('y', 2)).to be_nil
       end
@@ -86,7 +86,7 @@ describe Board do
       end
     end
 
-    it 'should return false when not a win' do
+    it 'returns false when not a win' do
       expect(subject.horizontal_win('any' || 'red' || 'yellow')).to be false
     end
   end
@@ -124,7 +124,7 @@ describe Board do
       end
     end
 
-    it 'should return false when not a win' do
+    it 'returns false when not a win' do
       expect(subject.vertical_win('any' || 'red' || 'yellow')).to be false
     end
   end
@@ -172,14 +172,14 @@ describe Board do
       end
     end
 
-    it 'should return false when not a win' do
+    it 'returns false when not a win' do
       expect(subject.diagonal_win('any' || 'red' || 'yellow')).to be false
     end
   end
 
   describe '#win?' do
     subject = Board.new
-    it 'should return false when no win' do
+    it 'returns false when no win' do
       expect(subject.win?('any')).to be false
     end
 
