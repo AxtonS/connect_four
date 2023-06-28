@@ -3,6 +3,8 @@
 The purpose of this project is to learn test driven development  
 
 ## Structure  
+This is my initial idea for how to structure this game, the final product will likely be different.  
+
 Board class:  
 -has board size  
 -board will be stored in a hash table a-f and 1-7 holding 0-3 as state values  
