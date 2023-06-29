@@ -2,7 +2,8 @@
 
 # contains methods to interact with the game
 class Interface
-  def name(player)
+  def get_name(player)
     puts "Please enter #{player}'s name"
+    gets.chomp
   end
 end
