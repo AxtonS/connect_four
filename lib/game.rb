@@ -43,4 +43,8 @@ class Game
     "\u{2501}\u{2501}\u{2501}\u{253B}\u{2501}\u{2501}\u{2501}\u{253B}\u{2501}\u{2501}\u{2501}\u{253B}\u{2501}\u{2501}"\
     "\u{2501}\u{251B}"
   end
+
+  def place(row, column, symbol)
+    @board[row][column] = symbol
+  end
 end
