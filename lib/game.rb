@@ -48,3 +48,6 @@ class Game
     @board[row][column] = symbol
   end
 end
+
+game = Game.new
+game.display
